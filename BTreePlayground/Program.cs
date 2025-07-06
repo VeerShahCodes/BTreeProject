@@ -14,7 +14,12 @@ namespace BTreePlayground
             tree.Insert(11);
             tree.Insert(6);
             tree.Insert(12);
-
+            tree.Insert(13);
+            tree.Insert(14);
+            tree.Insert(1);
+            tree.Insert(2);
+            tree.Insert(3);
+            Node<int> node = tree.Search(13);
             ;
         }
     }

@@ -5,10 +5,28 @@ namespace BTreeTestProject
     public sealed class Test1
     {
         [TestMethod]
-        public void InsertTest()
+        public void SearchTest()
         {
             BTree<int> tree = new BTree<int>();
+            tree.Insert(7);
+            tree.Insert(8);
+            tree.Insert(9);
             tree.Insert(10);
+            tree.Insert(11);
+            tree.Insert(6);
+            tree.Insert(12);
+            tree.Insert(13);
+            tree.Insert(14);
+            tree.Insert(1);
+            tree.Insert(2);
+            tree.Insert(3);
+            Node<int> node = tree.Search(13);
+            Assert.IsNotNull(node, "Node should not be null");
+            Assert.AreEqual(13, node.keys[0], "Node should contain the value 13");
+            Node<int> node1 = tree.Search(15);
+            Assert.IsNull(node1, "Node should be null for non-existing value");
+            Node<int> node2 = tree.Search(10);
+            Assert.IsNotNull(node2, "Node should not be null for existing value");
 
         }
     }
