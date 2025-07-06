@@ -80,13 +80,19 @@
         public Node<T> Split(Node<T>? node, int index)
         {
             var temp = node.children[index];
-            var newKey = temp.keys[1];
+           
+            node.AddKey(temp.keys[1]);
             temp.keys.RemoveAt(1);
-            node.AddKey(newKey);
+            
             Node<T> newNode = new Node<T>();
             node.children.Insert(index + 1, newNode);
-            newNode.AddKey(temp.keys[2]);
+
+            newNode.AddKey(temp.keys[1]);
+            //add children
+
+
             temp.keys.RemoveAt(2);
+
             newNode.AddKey(temp.keys[2]);
             temp.keys.RemoveAt(2);
 
