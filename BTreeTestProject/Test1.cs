@@ -29,5 +29,29 @@ namespace BTreeTestProject
             Assert.IsNotNull(node2, "Node should not be null for existing value");
 
         }
+        [TestMethod]
+        public void BigTest()
+        {
+            Random random = new Random();
+            BTree<int> tree = new BTree<int>();
+            List<int> values = new List<int>();
+            int size = 1000;
+            for (int i = 0; i < size; i++)
+            {
+                int value = random.Next(1, 1001);
+                values.Add(value);
+                tree.Insert(value);
+            }           
+            bool isTrue = true;
+            for (int i = 0; i < values.Count; i++)
+            {
+                if(tree.Search(values[i]) == null)
+                {
+                    isTrue = false;
+                    break;
+                }
+            }
+            Assert.IsTrue(isTrue, "All values were found in the tree after insertion.");
+        }
     }
 }

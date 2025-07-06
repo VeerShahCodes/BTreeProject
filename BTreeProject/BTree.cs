@@ -13,13 +13,13 @@
 
         public void Insert(T value)
         {
-            if (Root.KeyCount == Root.keys.Capacity)
+            if (Root.keys.Count == Root.keys.Capacity)
             {
                 Node<T> newRoot = SplitTop(Root);
                 Root = newRoot;
             }
             Root = InsertRec(Root, value);
-
+            ;
         }
         private Node<T> InsertRec(Node<T> node, T value)
         {
@@ -37,7 +37,7 @@
                     index++;
                 }
             }
-            if (node.children[index].KeyCount == node.children[index].keys.Capacity)
+            if (node.children[index].keys.Count == node.children[index].keys.Capacity)
             {
                 node = Split(node, index);
                 index = 0;
@@ -59,7 +59,7 @@
 
             newNode.AddKey(node.keys[1]);
             node.keys.RemoveAt(1);
-
+            
             newNode.children.Add(new Node<T>());
             newNode.children[0].AddKey(node.keys[0]);
             node.keys.RemoveAt(0);
@@ -105,10 +105,18 @@
             {
                 return node;
             }
-            newNode.children.Add(temp.children[2]);
-            temp.children.RemoveAt(2);
-            newNode.children.Add(temp.children[2]);
-            temp.children.RemoveAt(2);
+            if (temp.children.Count > 2)
+            {
+                newNode.children.Add(temp.children[2]);
+                temp.children.RemoveAt(2);
+            }
+            if(temp.children.Count > 2)
+            {
+                newNode.children.Add(temp.children[2]);
+                temp.children.RemoveAt(2);
+
+            }
+
 
             return node;
 
