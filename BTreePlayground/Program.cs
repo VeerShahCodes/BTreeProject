@@ -14,6 +14,7 @@ namespace BTreePlayground
             tree.Insert(11);
             tree.Insert(6);
             tree.Insert(12);
+
             ;
         }
     }

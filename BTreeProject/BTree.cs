@@ -53,5 +53,53 @@
 
             
         }
+        public Node<T> SplitTop(Node<T>? node)
+        {
+            Node<T> newNode = new Node<T>();
+
+            newNode.AddKey(node.keys[1]);
+            node.keys.RemoveAt(1);
+
+            newNode.children.Add(new Node<T>());
+            newNode.children[0].AddKey(node.keys[0]);
+            node.keys.RemoveAt(0);
+            newNode.children.Add(new Node<T>());
+            newNode.children[1].AddKey(node.keys[0]);
+            node.keys.RemoveAt(0);
+
+            newNode.children[0].children.Add(node.children.First());
+            node.children.RemoveAt(0);
+            newNode.children[0].children.Add(node.children.First());
+            node.children.RemoveAt(0);
+            newNode.children[1].children.Add(node.children.First());
+            node.children.RemoveAt(0);
+            newNode.children[1].children.Add(node.children.First());
+            node.children.RemoveAt(0);
+            return newNode;
+        }
+        public Node<T> Split(Node<T>? node, int index)
+        {
+            var temp = node.children[index];
+            var newKey = temp.keys[1];
+            temp.keys.RemoveAt(1);
+            node.AddKey(newKey);
+            Node<T> newNode = new Node<T>();
+            node.children.Insert(index + 1, newNode);
+            newNode.AddKey(temp.keys[2]);
+            temp.keys.RemoveAt(2);
+            newNode.AddKey(temp.keys[2]);
+            temp.keys.RemoveAt(2);
+
+            return node;
+
+
+
+
+
+
+
+
+
+        }
     }
 }

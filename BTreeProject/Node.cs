@@ -45,55 +45,7 @@ namespace BTreeProject
             }
 
         }
-        public void Split(Node<T>? previous, int index)
-        {
-            if (previous != null)
-            {
-                previous.keys.Insert(index, keys[1]);
-                T valLeft = keys[0];
-                T valRight = keys[2];
-                keys.Clear();
-                keys.Add(valLeft);
-                keys.Add(valRight);
-                KeyCount = 2;
-                
-            }
-            else
-            {
 
-                children.Add(new Node<T>());
-                children.Add(new Node<T>());
-                children[index].AddKey(keys[0]);
-                children[index + 1].AddKey(keys[2]);
-                ChildCount += 2;
-                T value = keys[1];
-                KeyCount = 1;
-                keys.Clear();
-                keys.Add(value);
-            }
-        }
-        //public void TwoNodeSplit(Node<T> previous, int index)
-        //{
-        //    children.Add(new Node<T>());
-        //    children.Add(new Node<T>());
-        //    children[index].AddKey(keys[0]);
-        //    children[index + 1].AddKey(keys[2]);
-        //    ChildCount += 2;
-        //    T value = keys[1];
-        //    KeyCount = 1;
-        //    keys.Clear();
-        //    keys.Add(value);
-        //}
 
-        //public void ThreeNodeSplit(Node<T> previous, int index) 
-        //{
-        //    previous.AddKey(keys[1]);
-        //    T leftVal = 
-        //    keys.Clear();
-        //    keys.Add(keys[0]);
-        //    keys.Add(keys[2]);
-        //    KeyCount = 2;
-            
-        //}
     }
 }
